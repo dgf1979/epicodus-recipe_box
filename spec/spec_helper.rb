@@ -1,10 +1,12 @@
-ENV['RACK_ENV'] = 'test'
-ActiveRecord::Base.establish_connection(:test)
-ActiveRecord::Base.logger = Logger.new(STDOUT)
+#ENV['RACK_ENV'] = 'test' #DOES NOT WORK - CALLED TOO LATE
+#ActiveRecord::Base.establish_connection(:test)
+
 
 require('bundler/setup')
 Bundler.require(:default, :test)
 Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each { |file| require file}
+
+#ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 puts "*******************"
 puts "RACK_ENV: #{ENV['RACK_ENV']} "
