@@ -6,7 +6,5 @@ gem('sinatra-activerecord')
 gem('rake')
 gem('pg')
 
-group(:test) do
-  gem('rspec')
-  gem('pry')
-end
+gem('rspec')
+gem('pry')

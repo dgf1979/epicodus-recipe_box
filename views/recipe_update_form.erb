@@ -1,0 +1,45 @@
+<%= @recipe.name %>
+
+<h5>Categories<h5>
+<h6>Currently Assigned Categories</h6>
+<ul>
+<% @recipe.categories.each do |category| %>
+  <li><%= category.name %></li>
+<% end %>
+</ul>
+<h6>Available Categories</h6>
+<form action='/recipes/<%= @recipe.id %>/add_category' method='post'>
+  <select name='category_id' id='category_id'>
+    <% Category.all.each do |category| %>
+      <option value='<%= category.id %>'><%= category.name %></option>
+    <% end %>
+  </select>
+  <button type='submit'>Add To Recipe</button>
+</form>
+<h6>Add a New Category</h6>
+<form action="/recipes/<%= @recipe.id%>/categories/create" method="post">
+  <input type="text" name="name" id="name">
+  <button type="Submit" name='submit_type' value='new_category'>Add Category</button>
+</form>
+
+<h5>Ingredients<h5>
+<h6>Currently Assigned Ingredients</h6>
+  <ul>
+    <% @recipe.ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
+    <% end %>
+  </ul>
+
+  <form action='/recipes/<%= @recipe.id %>/add_ingredient' method='post'>
+    <select name='ingredient_id' id="ingredient_id">
+      <% Ingredient.all.each do |ingredient| %>
+      <option value='<%= ingredient.id %>'><%= ingredient.name %></option>
+      <% end %>
+    </select>
+    <button type='sumbit'>Add Ingredient</button>
+  </form>
+<h6>Add a New Ingredient</h6>
+<form action="/recipes/<%= @recipe.id%>/ingredients/create" method="post">
+  <input type="text" name="name" id="name">
+  <button type="Submit" name='submit_type' value='new_ingredient'>Add Ingredient</button>
+</form>

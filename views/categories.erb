@@ -1,0 +1,5 @@
+<h3> Here are all your recipe categories </h3>
+
+<% Category.all.each do |category| %>
+<%= category.name %>
+<% end %>

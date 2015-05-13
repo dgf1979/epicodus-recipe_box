@@ -1,0 +1,5 @@
+<h3> Here are all your recipe ingredients </h3>
+
+<% Ingredient.all.each do |ingredient| %>
+<%= ingredient.name %>
+<% end %>
