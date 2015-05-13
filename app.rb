@@ -20,3 +20,9 @@ end
 get('/recipes') do
   erb(:recipes)
 end
+
+##CATEGORY
+#READ (list all)
+get('/categories') do
+  erb(:categories)
+end
