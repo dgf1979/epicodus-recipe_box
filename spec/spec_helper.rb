@@ -19,5 +19,14 @@ RSpec.configure do |config|
   end
   config.after(:each) do
     #optionally do something after each test
+    Category.all.each do |c|
+      c.destroy()
+    end
+    Ingredient.all.each do |i|
+      i.destroy()
+    end
+    Recipe.all.each do |r|
+      r.destroy()
+    end
   end
 end

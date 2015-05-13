@@ -21,26 +21,32 @@ get('/recipes') do
   erb(:recipes)
 end
 
+#CREATE FORM
+get('/recipes/add') do
+  erb(:recipe_add_form)
+end
+#CREATE
+post('/recipes/add') do
+  @recipe = Recipe.create(name: params.fetch('name'))
+  redirect to("/recipes/#{@recipe.id}/edit")
+end
+
 #READ (list one in display mode)
 get('/recipes/:recipe_id') do |recipe_id|
   @recipe = Recipe.find(recipe_id)
   erb(:recipe)
 end
 
-#CREATE
-get('/recipes/add') do
-  erb(:recipe_add_form)
-end
-
-post('/recipes/add') do
-  @recipe = Recipe.create(name: params.fetch('name'))
-  redirect to("/recipes/#{@recipe.id}")
-end
-
-#UPDATE
+#UPDATE FORM
 get('/recipes/:recipe_id/edit') do |recipe_id|
   @recipe = Recipe.find(recipe_id)
   erb(:recipe_update_form)
+end
+#UPDATE
+patch('/recipes/:recipe_id/edit') do |recipe_id|
+  instruction = params['instruction']
+  Recipe.find(recipe_id).update({ :instruction => instruction})
+  redirect to("/recipes/#{recipe_id}/edit")
 end
 
 ##CATEGORY
@@ -55,7 +61,7 @@ post('/recipes/:recipe_id/categories/create') do |recipe_id|
   redirect to("/recipes/#{recipe_id}/edit")
 end
 
-#UPDATE (link a category to a recipe)
+#CREATE JOIN (link a category to a recipe)
 post('/recipes/:recipe_id/add_category') do |recipe_id|
   recipe = Recipe.find(recipe_id)
   category = Category.find(params['category_id'])
@@ -77,7 +83,7 @@ post('/recipes/:recipe_id/ingredients/create') do |recipe_id|
   redirect to("/recipes/#{recipe_id}/edit")
 end
 
-#UPDATE (link a category to an ingredient)
+#CREATE JOIN (link a category to an ingredient)
 post('/recipes/:recipe_id/add_ingredient') do |recipe_id|
   recipe = Recipe.find(recipe_id)
   ingredient = Ingredient.find(params['ingredient_id'])

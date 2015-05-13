@@ -1,4 +1,25 @@
-TBD
+<h2> Recipe Card for <%= @recipe.name %> </h2>
 
+<h3> Recipe Categories: </h3>
 
-<a href='/recipes/<%= @recipe.id %>/edit'>edit</a>
+<ul>
+  <% @recipe.categories.each do |category| %>
+  <li><%= category.name %></li>
+  <% end %>
+</ul>
+
+<h3> Ingredients Required: </h3>
+
+<ul>
+<% @recipe.ingredients.each do |ingredient| %>
+  <li><%= ingredient.name %></li>
+  <% end %>
+</ul>
+
+<h3> Instructions: </h3>
+
+<%= @recipe.instruction %>
+
+<br>
+
+<a href='/recipes/<%= @recipe.id %>/edit'>Edit recipe card</a>

@@ -1,0 +1,28 @@
+.editor_container {
+  margin: 10px;
+  background-color: silver;
+  padding: 10px;
+}
+
+div.section {
+  margin: 10px;
+  padding: 10px;
+  border: 3px;
+  border-style: dotted;
+
+}
+
+div.section li {
+  font-style: italic;
+  list-style: none;
+}
+
+footer {
+  margin: auto;
+  text-align: right;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 40px;
+  height: 40px;
+}
