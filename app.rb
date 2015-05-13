@@ -26,3 +26,9 @@ end
 get('/categories') do
   erb(:categories)
 end
+
+##INGREDIENTS
+#READ (list all)
+get('/ingredients') do
+  erb(:ingredients)
+end
