@@ -1,9 +1,14 @@
+require('pg')
 require('sinatra')
 require('sinatra/reloader')
 require('sinatra/activerecord')
+
+require('./lib/category')
+require('./lib/ingredient')
+require('./lib/recipe')
+
 also_reload('lib/**/*.rb')
-require('pg')
-Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file}
+
 
 require('pry')
 
@@ -19,6 +24,7 @@ end
 
 #INDEX redirect to recipes
 get ('/') do
+  #binding.pry
   redirect to('/recipes')
 end
 
