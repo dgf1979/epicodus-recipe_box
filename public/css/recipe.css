@@ -16,10 +16,12 @@ h1, h2, h3, h4, h5, h6 {
 
 div.category_list {
   display: inline-block;
+  width: 40%;
 }
 
 div.ingredient_list {
   display: inline-block;
+  width: 40%
 }
 
 .editor_container {
