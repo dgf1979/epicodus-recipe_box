@@ -2,23 +2,28 @@
 
 <a href='/recipes/add'>Add a New Recipe</a>
 <br />
-<ul>
-<% Recipe.all_by_rating.each do |recipe| %>
-  <li>
-    <a href='/recipes/<%= recipe.id %>'><%= recipe.name %></a>
-    <!-- <form action='/recipes/<%= recipe.id %>/delete' method='post'>
-      <input type='hidden' name='method' value='delete'>
-      <button type='submit'>
-        <span class="glyphicon glyphicon-remove-circle warning" aria-hidden="true"></span>
-      </button>
-    </form> -->
-    <a href='/recipes/<%= recipe.id %>/delete'>
-      <span class="glyphicon glyphicon-remove-circle warning" aria-hidden="true">
-      </span>
-      </a>
-      <% recipe.rating.times do %>
-      <span class="glyphicon glyphicon-star rating" aria-hidden="true"></span>
-      <% end %>
-  </li>
-<% end %>
-<ul>
+<div class='recipe_list section'>
+  <table>
+    <tr>
+      <th></th> <th>Rating</th> <th>Delete</th>
+    </tr>
+  <% Recipe.all_by_rating.each do |recipe| %>
+    <tr>
+      <td>
+        <a href='/recipes/<%= recipe.id %>'><%= recipe.name %></a>
+      </td>
+      <td>
+        <% recipe.rating.times do %>
+        <span class="glyphicon glyphicon-star rating" aria-hidden="true"></span>
+        <% end %>
+      </td>
+      <td>
+        <a href='/recipes/<%= recipe.id %>/delete'>
+          <span class="glyphicon glyphicon-remove-circle warning" aria-hidden="true">
+          </span>
+        </a>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>
