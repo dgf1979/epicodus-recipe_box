@@ -1,8 +1,9 @@
 <h3> Here are all your recipes by rating </h3>
 
-<a href='/recipes/add'>Add a New Recipe</a>
-<br />
+
 <div class='recipe_list section'>
+  <a href='/recipes/add'>Add a New Recipe</a>
+  <br /><br />
   <table>
     <tr>
       <th></th> <th>Rating</th> <th>Delete</th>
@@ -26,4 +27,39 @@
     </tr>
   <% end %>
   </table>
+
+</div>
+
+<div>
+  <div class='ingredient_list section'>
+    <table>
+      <tr>
+        <th><h5>Search By Ingredient</h5></th>
+      </tr>
+      <% Ingredient.all.each do |ingredient| %>
+      <tr>
+        <td>
+          <a href='/ingredients/<%= ingredient.id %>/recipes'><%= ingredient.name.upcase %></a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class='category_list section'>
+    <table>
+      <tr>
+        <th><h5>Search By Category</h5></th>
+      </tr>
+      <% Category.all.each do |category| %>
+      <tr>
+        <td>
+          <a href='/categories/<%= category.id %>/recipes'><%= category.name %></a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+
 </div>

@@ -80,6 +80,13 @@ get('/categories') do
   erb(:categories)
 end
 
+#READ (list RECIPES using)
+get('/categories/:category_id/recipes') do |category_id|
+  @category = Category.find(category_id)
+  @recipes = @category.recipes
+  erb(:recipes_with_category)
+end
+
 #CREATE (new category and redirect back to recipe update page)
 post('/recipes/:recipe_id/categories/create') do |recipe_id|
   Category.create(name: params['name'])
@@ -107,6 +114,13 @@ end
 #READ (list all)
 get('/ingredients') do
   erb(:ingredients)
+end
+
+#READ (list RECIPES using)
+get('/ingredients/:ingredient_id/recipes') do |ingredient_id|
+  @ingredient = Ingredient.find(ingredient_id)
+  @recipes = @ingredient.recipes
+  erb(:recipes_using_ingredient)
 end
 
 #CREATE (new ingredient and redirect back to recipe update page)
