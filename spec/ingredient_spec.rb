@@ -1,4 +1,3 @@
-ENV['RACK_ENV'] = 'test'
 require('spec_helper')
 
 describe(Ingredient) do

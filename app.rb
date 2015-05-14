@@ -1,6 +1,13 @@
-require('bundler/setup')
-Bundler.require(:default)
+require('sinatra')
+require('sinatra/reloader')
+require('sinatra/activerecord')
+also_reload('lib/**/*.rb')
+require('pg')
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file}
+
+require('pry')
+
+enable :Sessions
 
 #TEST
 get('/test') do
