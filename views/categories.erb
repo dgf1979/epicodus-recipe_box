@@ -1,5 +1,15 @@
 <h3> Here are all your recipe categories </h3>
 
+<ul>
 <% Category.all.each do |category| %>
-<%= category.name %>
-<% end %>
+  <li>
+    <%= category.name %>
+    <% if category.recipes.count <= 0 %>
+      <a href='/categories/<%= category.id %>/delete'>
+        <span class="glyphicon glyphicon-remove-circle warning" aria-hidden="true">
+        </span>
+      </a>
+    <% end %>
+  <% end %>
+  </li>
+</ul>

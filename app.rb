@@ -62,12 +62,6 @@ patch('/recipes/:recipe_id/edit') do |recipe_id|
   redirect to("/recipes/#{recipe_id}")
 end
 
-# #DELETE
-# delete('/recipes/:recipe_id/delete') do |recipe_id|
-#   Recipe.find(recipe_id).destroy
-#   redirect to('/recipes')
-# end
-
 #DELETE
 get('/recipes/:recipe_id/delete') do |recipe_id|
   Recipe.find(recipe_id).destroy
@@ -99,6 +93,12 @@ post('/recipes/:recipe_id/add_category') do |recipe_id|
   category = Category.find(params['category_id'])
   recipe.categories.push(category)
   redirect to("/recipes/#{recipe_id}/edit")
+end
+
+#DELETE CATEGORY
+get('/categories/:category_id/delete') do |category_id|
+  Category.find(category_id).destroy
+  redirect to('/categories')
 end
 
 #DELETE JOIN
@@ -135,6 +135,12 @@ post('/recipes/:recipe_id/add_ingredient') do |recipe_id|
   ingredient = Ingredient.find(params['ingredient_id'])
   recipe.ingredients.push(ingredient)
   redirect to("/recipes/#{recipe_id}/edit")
+end
+
+#DELETE INGREDIENT
+get('/ingredients/:ingredient_id/delete') do |ingredient_id|
+  Ingredient.find(ingredient_id).destroy
+  redirect to('/ingredients')
 end
 
 #DELETE JOIN

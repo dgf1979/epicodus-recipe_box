@@ -1,5 +1,15 @@
 <h3> Here are all your recipe ingredients </h3>
 
-<% Ingredient.all.each do |ingredient| %>
-<%= ingredient.name %>
-<% end %>
+<ul>
+  <% Ingredient.all.each do |ingredient| %>
+  <li>
+    <%= ingredient.name %>
+    <% if ingredient.recipes.count <= 0 %>
+    <a href='/ingredients/<%= ingredient.id %>/delete'>
+      <span class="glyphicon glyphicon-remove-circle warning" aria-hidden="true">
+      </span>
+    </a>
+    <% end %>
+    <% end %>
+  </li>
+</ul>
