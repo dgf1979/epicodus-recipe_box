@@ -21,5 +21,15 @@ describe(Recipe) do
       recipe = Recipe.create(name: 'banana split')
       expect(recipe.name).to(eq('Banana Split'))
     end
+
+    it('makes sure a rating is set and within expected bounds') do
+      recipe = Recipe.create(name: 'banana split')
+      expect(recipe.rating).to(eq(0))
+      recipe.update(rating: 7)
+      expect(recipe.rating).to(eq(0))
+      recipe.update(rating: 3)
+      expect(recipe.rating).to(eq(3))
+    end
+
   end
 end
