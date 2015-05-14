@@ -1,18 +1,23 @@
-require('pg')
-require('sinatra')
-require('sinatra/reloader')
-require('sinatra/activerecord')
+require("bundler/setup")
+Bundler.require(:default, :production)
 
-require('./lib/category')
-require('./lib/ingredient')
-require('./lib/recipe')
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
-also_reload('lib/**/*.rb')
-
-
-require('pry')
-
-enable :Sessions
+# require('pg')
+# require('sinatra')
+# require('sinatra/reloader')
+# require('sinatra/activerecord')
+#
+# require('./lib/category')
+# require('./lib/ingredient')
+# require('./lib/recipe')
+#
+# also_reload('lib/**/*.rb')
+#
+#
+# require('pry')
+#
+# enable :Sessions
 
 #TEST
 get('/test') do

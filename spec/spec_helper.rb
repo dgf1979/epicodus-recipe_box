@@ -1,13 +1,13 @@
 ENV['RACK_ENV'] = 'test'
 
-require('sinatra/activerecord')
-require('pry')
+require("bundler/setup")
+Bundler.require(:default, :test)
 
 #ActiveRecord::Base.establish_connection(:test)
 
-Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each { |file| require file}
+Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each { |file| require file }
 
-ActiveRecord::Base.logger = Logger.new(STDOUT)
+#ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 puts "*******************"
 puts "RACK_ENV: #{ENV['RACK_ENV']} "
