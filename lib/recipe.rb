@@ -5,6 +5,12 @@ class Recipe < ActiveRecord::Base
   validates :rating, :inclusion => { :in => 0..5 }
   before_validation(:capitalize_name)
   before_validation(:check_rating)
+
+
+  scope(:all_by_rating, -> do
+    self.all().order(rating: :desc)
+  end)
+
 private
 
    define_method(:capitalize_name) do

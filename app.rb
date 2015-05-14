@@ -13,7 +13,6 @@ end
 
 #INDEX redirect to recipes
 get ('/') do
-  #binding.pry
   redirect to('/recipes')
 end
 
@@ -44,6 +43,7 @@ get('/recipes/:recipe_id/edit') do |recipe_id|
   @recipe = Recipe.find(recipe_id)
   erb(:recipe_update_form)
 end
+
 #UPDATE
 patch('/recipes/:recipe_id/edit') do |recipe_id|
   update_hash = Hash.new()
@@ -60,6 +60,18 @@ patch('/recipes/:recipe_id/edit') do |recipe_id|
     Recipe.find(recipe_id).update(update_hash)
   end
   redirect to("/recipes/#{recipe_id}")
+end
+
+# #DELETE
+# delete('/recipes/:recipe_id/delete') do |recipe_id|
+#   Recipe.find(recipe_id).destroy
+#   redirect to('/recipes')
+# end
+
+#DELETE
+get('/recipes/:recipe_id/delete') do |recipe_id|
+  Recipe.find(recipe_id).destroy
+  redirect to('/recipes')
 end
 
 ##CATEGORY
@@ -82,6 +94,13 @@ post('/recipes/:recipe_id/add_category') do |recipe_id|
   redirect to("/recipes/#{recipe_id}/edit")
 end
 
+#DELETE JOIN
+get('/recipes/:recipe_id/remove_category/:category_id') do |recipe_id, category_id|
+  recipe = Recipe.find(recipe_id)
+  category = Category.find(category_id)
+  recipe.categories.destroy(category)
+  redirect to("/recipes/#{recipe_id}/edit")
+end
 
 ##############
 ##INGREDIENTS
@@ -101,5 +120,13 @@ post('/recipes/:recipe_id/add_ingredient') do |recipe_id|
   recipe = Recipe.find(recipe_id)
   ingredient = Ingredient.find(params['ingredient_id'])
   recipe.ingredients.push(ingredient)
+  redirect to("/recipes/#{recipe_id}/edit")
+end
+
+#DELETE JOIN
+get('/recipes/:recipe_id/remove_ingredient/:category_id') do |recipe_id, ingredient_id|
+  recipe = Recipe.find(recipe_id)
+  ingredient = Ingredient.find(ingredient_id)
+  recipe.ingredients.destroy(ingredient)
   redirect to("/recipes/#{recipe_id}/edit")
 end

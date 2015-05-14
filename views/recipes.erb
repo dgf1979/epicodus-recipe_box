@@ -1,9 +1,24 @@
-<h3> Here are all your recipes </h3>
+<h3> Here are all your recipes by rating </h3>
 
 <a href='/recipes/add'>Add a New Recipe</a>
-
+<br />
 <ul>
-<% Recipe.all.each do |recipe| %>
-  <li><a href='/recipes/<%= recipe.id %>'><%= recipe.name %></a></li>
+<% Recipe.all_by_rating.each do |recipe| %>
+  <li>
+    <a href='/recipes/<%= recipe.id %>'><%= recipe.name %></a>
+    <!-- <form action='/recipes/<%= recipe.id %>/delete' method='post'>
+      <input type='hidden' name='method' value='delete'>
+      <button type='submit'>
+        <span class="glyphicon glyphicon-remove-circle warning" aria-hidden="true"></span>
+      </button>
+    </form> -->
+    <a href='/recipes/<%= recipe.id %>/delete'>
+      <span class="glyphicon glyphicon-remove-circle warning" aria-hidden="true">
+      </span>
+      </a>
+      <% recipe.rating.times do %>
+      <span class="glyphicon glyphicon-star rating" aria-hidden="true"></span>
+      <% end %>
+  </li>
 <% end %>
 <ul>

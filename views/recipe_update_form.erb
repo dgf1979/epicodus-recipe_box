@@ -28,7 +28,11 @@
     <h6>Currently Assigned Categories:</h6>
     <ul>
     <% @recipe.categories.each do |category| %>
-      <li><%= category.name %></li>
+      <li><%= category.name %>
+      <a href='/recipes/<%= @recipe.id%>/remove_category/<%= category.id%>'>
+        <span class="glyphicon glyphicon-remove-circle warning" aria-hidden="true"></span>
+      </a>
+      </li>
     <% end %>
     </ul>
     <h6>Available Categories</h6>
@@ -53,10 +57,14 @@
     <h6>Currently Assigned Ingredients:</h6>
       <ul>
         <% @recipe.ingredients.each do |ingredient| %>
-        <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><%= ingredient.name %></li>
+        <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><%= ingredient.name %>
+          <a href='/recipes/<%= @recipe.id%>/remove_ingredient/<%= ingredient.id%>'>
+            <span class="glyphicon glyphicon-remove-circle warning" aria-hidden="true"></span>
+          </a>
+        </li>
         <% end %>
       </ul>
-
+      <h6>Available Ingredients</h6>
       <form action='/recipes/<%= @recipe.id %>/add_ingredient' method='post'>
         <select name='ingredient_id' id="ingredient_id">
           <% Ingredient.all.each do |ingredient| %>

@@ -1,3 +1,8 @@
+body {
+  background-image: url('/images/936249-Zoom.jpg');
+  background-repeat: no-repeat;
+}
+
 .editor_container {
   margin: 10px;
   background-color: silver;
@@ -25,4 +30,13 @@ footer {
   left: 0;
   right: 40px;
   height: 40px;
+}
+
+.warning {
+  color: red;
+  padding-left: 10px;
+}
+
+.rating {
+  padding-left: 10px;
 }
