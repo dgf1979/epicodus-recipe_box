@@ -92,3 +92,8 @@ footer {
 .centered {
   text-align: center;
 }
+
+.ok {
+  color: darkgreen;
+  padding-right: 10px;
+}

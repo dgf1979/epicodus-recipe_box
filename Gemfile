@@ -5,6 +5,7 @@ gem("sinatra-activerecord")
 gem("rake")
 gem("pg")
 gem("pry")
+gem("launchy")
 
 
 group(:production) do

@@ -57,7 +57,7 @@
     <h6>Currently Assigned Ingredients:</h6>
       <ul>
         <% @recipe.ingredients.each do |ingredient| %>
-        <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><%= ingredient.name %>
+        <li><span class="glyphicon glyphicon-ok ok" aria-hidden="true"></span><%= ingredient.name %>
           <a href='/recipes/<%= @recipe.id%>/remove_ingredient/<%= ingredient.id%>'>
             <span class="glyphicon glyphicon-remove-circle warning" aria-hidden="true"></span>
           </a>

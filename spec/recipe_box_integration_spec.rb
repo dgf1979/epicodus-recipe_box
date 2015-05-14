@@ -20,7 +20,22 @@ describe('Application Testing:', { :type => :feature }) do
    it('lists any added recipes') do
      Recipe.create(name: 'Oatmeal Cookies')
      visit('/recipes')
+     #save_and_open_page
      expect(page).to have_content('Oatmeal Cookies')
+   end
+
+   #READ (list one)
+   it('dsiplays a single recipe card') do
+     recipe = Recipe.create(name: 'cassarole')
+     visit("/recipes/#{recipe.id}")
+     expect(page).to have_content('Cassarole')
+   end
+
+   #UPDATE (edit recipe)
+   it('displays edit form with instantaneous results') do
+     recipe = Recipe.create(name: 'Sandwich')
+     visit("/recipes/#{recipe.id}/edit")
+     find_field('rating').value
    end
   end
 
@@ -31,6 +46,14 @@ describe('Application Testing:', { :type => :feature }) do
      Category.create(name: 'Dessert')
      visit('/categories')
      expect(page).to have_content('DESSERT')
+   end
+
+   #DELETE (delete a single category)
+   it('removes a category') do
+     category = Category.create(name: 'Dessert')
+     visit('/categories')
+     find(:xpath, "//a[@href='/categories/#{category.id}/delete']").click
+     expect(page).to_not have_content('DESSERT')
    end
   end
 
