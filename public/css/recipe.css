@@ -5,6 +5,7 @@
 }
 
 div.section {
+
   margin: 10px;
   padding: 10px;
   border: 3px;
@@ -18,7 +19,6 @@ div.section li {
 }
 
 footer {
-  margin: auto;
   text-align: right;
   position: fixed;
   bottom: 0;

@@ -1,16 +1,28 @@
-<div class='editor_container'>
-
-  <div id='recipe_data' class='section'>
-    <h3>Recipe Name: <%= @recipe.name %></h3>
-    Recipe Instructions:
-    <form action='/recipes/<%= @recipe.id %>/edit' method='post'>
+<div class='row'>
+  <div id='recipe_data' class='section col-lg-4'>
+    <h3>Recipe</h3>
+    <form action='/recipes/<%=@recipe.id%>/edit' method='post'>
       <input type='hidden' name='_method' value='patch'>
-      <textarea rows='8' cols='60' name='instruction' id='instruction'><%=@recipe.instruction %></textarea>
-      <button type='sumbit'>Update Instructions</button>
+      Name:
+      <br />
+      <input type='text' name='name' id='name' value='<%= @recipe.name %>'>
+      <br /><br />
+      Rating:
+      <br />
+      <input type="number" name="rating" id='rating' min="0" max="5" value='<%=@recipe.rating%>'>
+      <br /><br />
+      Recipe Instructions:
+      <br />
+      <input type='hidden' name='_method' value='patch'>
+      <textarea rows='12' cols='30' name='instruction' id='instruction'><%=@recipe.instruction %></textarea>
+      <br /><br />
+      <button type='sumbit'>Update</button>
     </form>
+    <br />
+    <a href='/recipes/<%= @recipe.id %>'>View Recipe Card</a>
   </div>
 
-  <div id='recipe_categories>' class='section'>
+  <div id='recipe_categories>' class='section col-lg-4'>
 
     <h3>Categories<h3>
     <h6>Currently Assigned Categories:</h6>
@@ -36,7 +48,7 @@
 
   </div>
 
-  <div id='recipe_ingredients' class='section'>
+  <div id='recipe_ingredients' class='section col-lg-4'>
     <h3>Ingredients<h3>
     <h6>Currently Assigned Ingredients:</h6>
       <ul>

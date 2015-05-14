@@ -3,22 +3,6 @@ Bundler.require(:default, :production)
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
-# require('pg')
-# require('sinatra')
-# require('sinatra/reloader')
-# require('sinatra/activerecord')
-#
-# require('./lib/category')
-# require('./lib/ingredient')
-# require('./lib/recipe')
-#
-# also_reload('lib/**/*.rb')
-#
-#
-# require('pry')
-#
-# enable :Sessions
-
 #TEST
 get('/test') do
   @test_var = 'Sinatra OK'
@@ -62,9 +46,20 @@ get('/recipes/:recipe_id/edit') do |recipe_id|
 end
 #UPDATE
 patch('/recipes/:recipe_id/edit') do |recipe_id|
-  instruction = params['instruction']
-  Recipe.find(recipe_id).update({ :instruction => instruction})
-  redirect to("/recipes/#{recipe_id}/edit")
+  update_hash = Hash.new()
+  if params.has_key?('name')
+    update_hash.store(:name, params['name'])
+  end
+  if params.has_key?('instruction')
+    update_hash.store(:instruction, params['instruction'])
+  end
+  if params.has_key?('rating')
+    update_hash.store(:rating, params['rating'].to_i)
+  end
+  if !update_hash.empty?
+    Recipe.find(recipe_id).update(update_hash)
+  end
+  redirect to("/recipes/#{recipe_id}")
 end
 
 ##CATEGORY
