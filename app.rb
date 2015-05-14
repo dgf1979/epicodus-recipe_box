@@ -83,7 +83,8 @@ end
 
 #CREATE (new category and redirect back to recipe update page)
 post('/recipes/:recipe_id/categories/create') do |recipe_id|
-  Category.create(name: params['name'])
+  category = Category.create(name: params['name'])
+  Recipe.find(recipe_id).categories.push(category)
   redirect to("/recipes/#{recipe_id}/edit")
 end
 
@@ -125,7 +126,8 @@ end
 
 #CREATE (new ingredient and redirect back to recipe update page)
 post('/recipes/:recipe_id/ingredients/create') do |recipe_id|
-  Ingredient.create(name: params['name'])
+  ingredient = Ingredient.create(name: params['name'])
+  Recipe.find(recipe_id).ingredients.push(ingredient)
   redirect to("/recipes/#{recipe_id}/edit")
 end
 

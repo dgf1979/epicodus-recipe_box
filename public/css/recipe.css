@@ -3,6 +3,12 @@ body {
   background-repeat: no-repeat;
 }
 
+.in_use {
+  font-size: 0.7em;
+  font-style: italic;
+  color: purple;
+}
+
 textarea#instructions {
   background-color: transparent;
   width: 100%;
