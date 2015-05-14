@@ -20,24 +20,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 10px;
 }
 
-div.recipe_card {
-
-}
-
-div.card_left {
-  display: inline-block;
-  height: 100%;
-  text-align: left;
-  margin-right: 20px;
-}
-
-div.card_right {
-  display: inline-block;
-  text-align: left;
-  height: 100%;
-  margin-left: 20px;
-}
-
 div.section {
   background-color:rgba(250,250,250,0.7);
   margin: 10px;

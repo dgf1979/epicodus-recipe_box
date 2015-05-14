@@ -1,54 +1,18 @@
-<!-- <div class='section recipe_card'>
-  row
-  level 1
-  <div class='card_left'>
-    row
-    level2
-    <h3><%= @recipe.name %></h3>
-    RATING
-    <% @recipe.rating.times do %>
-    <span class="glyphicon glyphicon-star rating" aria-hidden="true"></span>
-    <% end %>
-    <h4> Instructions: </h4>
-    <%= @recipe.instruction %>
-  </div>
-
-  <div class='card_right'>
-    <h4> Recipe Categories: </h4>
-
-    <ul>
-      <% @recipe.categories.each do |category| %>
-      <li><%= category.name %></li>
-      <% end %>
-    </ul>
-
-    <h4> Ingredients Required: </h4>
-
-    <ul>
-      <% @recipe.ingredients.each do |ingredient| %>
-      <li><%= ingredient.name %></li>
-      <% end %>
-    </ul>
-
-  </div>
-</div>
-<a href='/recipes/<%= @recipe.id %>/edit'>Edit recipe card</a> -->
-
 <div class="row section">
 
 
-  <div class="col-sm-8">
+  <div class="col-sm-12">
 
     <h3 class='centered'><%= @recipe.name %></h3>
 
     <div class="row">
-      <div class="col-sm-4 col-sm-4">
+      <div class="col-sm-8 col-sm-8">
         RATING
         <% @recipe.rating.times do %>
         <span class="glyphicon glyphicon-star rating" aria-hidden="true"></span>
         <% end %>
       </div>
-      <div class="col-sm-4 col-sm-4">
+      <div class="col-sm-8 col-sm-8">
         <h4>CATEGORIES</h4>
         <% @recipe.categories.each do |category| %>
         <%= category.name %>
@@ -57,7 +21,7 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-4 col-sm-4">
+      <div class="col-sm-8 col-sm-8">
         <h4> Ingredients Required: </h4>
         <ul>
           <% @recipe.ingredients.each do |ingredient| %>
@@ -65,7 +29,7 @@
           <% end %>
         </ul>
       </div>
-      <div class="col-sm-4 col-sm-4">
+      <div class="col-sm-8 col-sm-8">
         <h4> Instructions: </h4>
         <div>
           <textarea id='instructions'>
